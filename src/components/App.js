@@ -9,6 +9,8 @@ import Sidebar from 'react-sidebar';
 import MaterialTitlePanel from './MaterialTitlePanel';
 import SidebarContent from './SidebarContent';
 
+import Map from './Map';
+
 const muiTheme = getMuiTheme({
   palette: {
     accent1Color: deepOrange500,
@@ -50,6 +52,7 @@ const App = () => {
     <MuiThemeProvider muiTheme={muiTheme}>
       <Sidebar {...sidebarProps}>
         <MaterialTitlePanel title={contentHeader}>
+          <Map/>
         </MaterialTitlePanel>
       </Sidebar>
     </MuiThemeProvider>
