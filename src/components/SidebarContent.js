@@ -37,11 +37,12 @@ class SidebarContent extends React.Component {
 
     this.state = {
       checked: [],
-      expanded: [],
+      expanded: ["mars"],
     };
   }
 
   render() {
+    console.log("this.state: ", this.state)
     return (
       <MaterialTitlePanel title="Menu" style={styles.sidebar}>
         <CheckboxTree
