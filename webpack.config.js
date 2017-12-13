@@ -1,5 +1,7 @@
 const path = require('path');
 
+const distFiles = ['bundle.js'];
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -10,5 +12,16 @@ module.exports = {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
     ]
+  },
+  devServer: {
+    contentBase: path.resolve('dist'),
+    publicPath: '/',
+    before: function(app){
+      app.get('/*', function(req, res) {
+        reqFile = req.path.slice(1)
+        file = distFiles.includes(reqFile) ? reqFile : "index.html"
+        res.sendFile(path.resolve(__dirname, 'dist/' + file));
+      });
+    }
   }
 };
